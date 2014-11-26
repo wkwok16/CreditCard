@@ -4,6 +4,8 @@ public class CreditCard
   { 
     int evenArraySize = 0;
     int oddArraySize = 0;
+    int evenArrayTotal = 0;
+    int oddArrayTotal = 0;
     if(cardNumber.length()%2 == 0)
     {
       evenArraySize = cardNumber.length()/2;
@@ -16,7 +18,6 @@ public class CreditCard
     }
     int[] evenArray = new int[evenArraySize];
     int[] oddArray = new int[oddArraySize];
-    int[] bothArray = new int[cardNumber.length()];
     
     int x = 0; // Value to use for the odd number array input
     int y = 0; // Value to use for the even number array input
@@ -61,9 +62,33 @@ public class CreditCard
         }
       } 
     }
-          
-          
-          
+    
+    for(int i = 0; i < oddArray.length; i++)
+    {
+      oddArray[i] = oddArray[i]*2;
+      if(oddArray[i] >= 10)
+      {
+        oddArray[i] = oddArray[i]-10+1;
+      }
+    }
+    
+    for(int i = 0; i < oddArray.length; i++)
+    {
+      oddArrayTotal += oddArray[i];
+    }
+    for(int i = 0; i < evenArray.length; i++)
+    {
+      evenArrayTotal += evenArray[i];
+    }
+    
+    if(((oddArrayTotal+evenArrayTotal)%10) == 0)
+    {
+      return "It is a valid credit card number";
+    }
+    else
+    {
+      return "It is not a valid credit card number";
+    }     
     //Take every even number from the back, convert it back to an int, multiply it by 2, and put it into a new int array
     //Go through the array and if the int is greater than 10, subtract the number by 10 and add 1.
     //Add all the values in the array together into a value set at the beginning
@@ -74,6 +99,7 @@ public class CreditCard
   }
   public int findType(String cardNumber)
   {
+    return 2;
     //create an int array of each int value
     //if first value of the array is 4, return 2;
     //if first value is 3, and second number is 4 or 7, return 4
