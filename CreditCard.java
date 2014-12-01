@@ -97,13 +97,16 @@ public class CreditCard
   
   public int findType(String cardNumber)
   {
+    // Create new array for values
     int[] cardArray = new int[cardNumber.length()];
     
+    // Puts values of individual digits into the array
     for(int i = 0; i < cardNumber.length(); i++)
     {
       cardArray[i] = Integer.parseInt(cardNumber.substring(i,i+1));
     }
     
+    // Brute force for starting with 3. 
     if(cardArray[0] == 3)
     {
       if(cardArray[1] == 4 || cardArray[1] == 7)
@@ -123,11 +126,13 @@ public class CreditCard
       }
     }
     
+    // Brute force for Visa
     else if(cardArray[0] == 4)
     {
       return 2;
     }
     
+    // Brute force for Master Card, checking if it also has the second digit working
     else if(cardArray[0] == 5)
     {
       if(cardArray[1] >= 1 && cardArray[1] <= 5)
@@ -136,6 +141,7 @@ public class CreditCard
       }
     }
     
+    // Brute force for Discover Card, checking if the first 4 digits match 6011
     else if(cardArray[0] == 6)
     {
       if(cardArray[1] == 0)
@@ -149,6 +155,7 @@ public class CreditCard
         }
       }
     }    
+    // Else it'll return 0.
     return 0;
   }
 }
