@@ -26,8 +26,8 @@ public class CreditCard
     int[] oddArray = new int[oddArraySize];
     
     //Values to use for odd and even number array inputs
-    int x = 0; // Odd
-    int y = 0; // Even
+    int x = 0; // Even
+    int y = 0; // Odd
     
     // Boolean to check if this is the first loop or not, to find end
     boolean runFirst = true;
@@ -40,12 +40,12 @@ public class CreditCard
       {
         if((i%2) == 0)
         {
-          oddArray[x] = Integer.parseInt(cardNumber.substring(i,i+1));
+          evenArray[x] = Integer.parseInt(cardNumber.substring(i,i+1));
           x++;
         }
         else
         {
-          evenArray[y] = Integer.parseInt(cardNumber.substring(i,i+1));
+          oddArray[y] = Integer.parseInt(cardNumber.substring(i,i+1));
           y++;
         }
       }
@@ -54,34 +54,34 @@ public class CreditCard
       {
         if((i%2) == 0)
         {
-          evenArray[y] = Integer.parseInt(cardNumber.substring(i,i+1));
-          y++;
+          oddArray[x] = Integer.parseInt(cardNumber.substring(i,i+1));
+          x++;
         }
         else
         {
-          oddArray[x] = Integer.parseInt(cardNumber.substring(i,i+1));
-          x++;
+          evenArray[y] = Integer.parseInt(cardNumber.substring(i,i+1));
+          y++;
         }
       }
      // find modulus of i and see if even or odd and also check size of string
     }
     
-    for(int i = 0; i < oddArray.length; i++)
+    for(int i = 0; i < evenArray.length; i++)
     {
-      oddArray[i] = oddArray[i]*2;
-      if(oddArray[i] >= 10)
+      evenArray[i] = evenArray[i]*2;
+      if(evenArray[i] >= 10)
       {
-        oddArray[i] = oddArray[i]-10+1;
+        evenArray[i] = evenArray[i]-10+1;
       }
     }
     
-    for(int i = 0; i < oddArray.length; i++)
-    {
-      oddArrayTotal += oddArray[i];
-    }
     for(int i = 0; i < evenArray.length; i++)
     {
       evenArrayTotal += evenArray[i];
+    }
+    for(int i = 0; i < oddArray.length; i++)
+    {
+      oddArrayTotal += oddArray[i];
     }
     
     if(((oddArrayTotal+evenArrayTotal)%10) == 0)
@@ -94,13 +94,6 @@ public class CreditCard
       System.out.println(oddArraySize + " " + evenArraySize);
       return "It is not a valid credit card number";
     }     
-    //Take every even number from the back, convert it back to an int, multiply it by 2, and put it into a new int array
-    //Go through the array and if the int is greater than 10, subtract the number by 10 and add 1.
-    //Add all the values in the array together into a value set at the beginning
-    //Take every odd number from the back, convert it back to an int, and put it into a new int array.
-    //Add all values in the array together into another value set at the beginning
-    //Add the values set at the beginning together, and check if modulus 10 = 0. If modulus = 0, return "It is a valid credit card number"
-    //      Else return "It is not a valid credit card number"
   }
   public int findType(String cardNumber)
   {
