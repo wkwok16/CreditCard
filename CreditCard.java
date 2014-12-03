@@ -1,3 +1,5 @@
+// Credit Card Verifyer
+// by William Kwok
 public class CreditCard
 {
   public String verify(String cardNumber)
@@ -155,6 +157,7 @@ public class CreditCard
         }
       }
     }    
+    
     // Else it'll return 0.
     return 0;
   }
